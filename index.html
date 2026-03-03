@@ -790,27 +790,36 @@ ul { list-style:none; }
     <p class="hero-sub">Discover 500+ destinations worldwide with unbeatable prices. From weekend getaways to dream honeymoons — we've got you covered.</p>
 
     <div class="search-box">
-      <div class="search-tabs">
-        <button class="search-tab active" onclick="switchTab(this,'flights')"><i class="fas fa-plane"></i> Flights</button>
-        <button class="search-tab" onclick="switchTab(this,'hotels')"><i class="fas fa-hotel"></i> Hotels</button>
-        <button class="search-tab" onclick="switchTab(this,'holidays')"><i class="fas fa-umbrella-beach"></i> Holidays</button>
-        <button class="search-tab" onclick="switchTab(this,'trains')"><i class="fas fa-train"></i> Trains</button>
-        <button class="search-tab" onclick="switchTab(this,'cabs')"><i class="fas fa-car"></i> Cabs</button>
+<div class="search-tabs">
+        <button class="search-tab active" onclick="switchRealTab('flights', this)"><i class="fas fa-plane"></i> Flights</button>
+        <button class="search-tab" onclick="switchRealTab('hotels', this)"><i class="fas fa-hotel"></i> Hotels</button>
+        <button class="search-tab" onclick="switchRealTab('holidays', this)"><i class="fas fa-umbrella-beach"></i> Holidays</button>
+        <button class="search-tab" onclick="switchRealTab('trains', this)"><i class="fas fa-train"></i> Trains</button>
+        <button class="search-tab" onclick="switchRealTab('cabs', this)"><i class="fas fa-car"></i> Cabs</button>
       </div>
-      <div class="search-form" id="searchForm">
-        <div class="search-field">
-          <label>From</label>
-          <input type="text" placeholder="New Delhi (DEL)" id="fromCity">
+
+      <div style="padding: 20px; background: white; border-radius: 0 0 20px 20px; min-height: 150px;">
+        
+        <div id="widget-flights" style="display:block;">
+          <script async src="https://tpwgts.com/content?currency=usd&trs=504149&shmarker=707698&show_hotels=true&powered_by=false&locale=en&searchUrl=booking.tripnestx.com%2Fflights&primary_override=%23FF4B12&color_button=%23FF4B12&color_icons=%23FF4B12&dark=%23262626&light=%23FFFFFF&secondary=%23FFFFFF&special=%23C4C4C4&color_focused=%23FF4B12&border_radius=14&plain=false&promo_id=7879&campaign_id=100" charset="utf-8"></script>
         </div>
-        <div class="search-field">
-          <label>To</label>
-          <input type="text" placeholder="Where to?">
+
+        <div id="widget-hotels" style="display:none; text-align:center; padding: 30px;">
+          <p style="color:#FF4B12; font-weight:bold;">Hotel Widget yahan aayega...</p>
         </div>
-        <div class="search-field">
-          <label>Date</label>
-          <input type="date" id="travelDate">
+
+        <div id="widget-holidays" style="display:none; text-align:center; padding: 30px;">
+          <p style="color:#FF4B12; font-weight:bold;">Klook (Holidays) Widget yahan aayega...</p>
         </div>
-        <button class="search-btn" onclick="handleSearch()"><i class="fas fa-search"></i> Search</button>
+
+        <div id="widget-trains" style="display:none; text-align:center; padding: 30px;">
+          <p style="color:#FF4B12; font-weight:bold;">Train Widget yahan aayega...</p>
+        </div>
+
+        <div id="widget-cabs" style="display:none; text-align:center; padding: 30px;">
+          <p style="color:#FF4B12; font-weight:bold;">GetRentacar Widget yahan aayega...</p>
+        </div>
+
       </div>
     </div>
 
@@ -1104,6 +1113,22 @@ ul { list-style:none; }
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0})"><i class="fas fa-arrow-up"></i></button>
 
 <script>
+
+function switchRealTab(tabId, el) {
+  // Sabhi tabs se active class hatao
+  document.querySelectorAll('.search-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+
+  // Sabhi widgets ko chhupao
+  document.getElementById('widget-flights').style.display = 'none';
+  document.getElementById('widget-hotels').style.display = 'none';
+  document.getElementById('widget-holidays').style.display = 'none';
+  document.getElementById('widget-trains').style.display = 'none';
+  document.getElementById('widget-cabs').style.display = 'none';
+
+  // Sirf click kiye hue tab ka widget dikhao
+  document.getElementById('widget-' + tabId).style.display = 'block';
+}
 // ==================== DATA ====================
 const destinations = [
   { name:"Maldives", country:"Indian Ocean", img:"https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&h=400&fit=crop", price:"₹39,999", trips:"12K+ booked" },
