@@ -774,8 +774,8 @@ ul { list-style:none; }
       <a href="#contact">Contact</a>
     </div>
     <div class="nav-cta">
-      <button class="btn-outline">Sign In</button>
-      <button class="btn-primary">Sign Up Free</button>
+      <button class="btn-outline" onclick="openCustomizeForm('')">Get Quote</button>
+      <a href="https://wa.me/919696171875?text=Hi%20TripNestX!%20I%20want%20to%20plan%20a%20trip." target="_blank" class="btn-primary" style="text-decoration:none;display:inline-flex;align-items:center;gap:6px;"><i class="fab fa-whatsapp"></i> Chat Now</a>
     </div>
     <button class="mobile-menu-btn" onclick="toggleMobile()"><i class="fas fa-bars"></i></button>
   </div>
@@ -924,7 +924,7 @@ ul { list-style:none; }
     <div class="deals-text">
       <h2>Summer Sale is Live!</h2>
       <p>Up to 60% off on 200+ international packages. Book now and save big on your dream vacation.</p>
-      <button class="deals-btn"><i class="fas fa-fire"></i> Grab the Deal</button>
+      <button class="deals-btn" onclick="document.getElementById('packages').scrollIntoView({behavior:'smooth'})"><i class="fas fa-fire"></i> Grab the Deal</button>
     </div>
     <div class="deals-countdown" id="countdown">
       <div class="cd-box"><span class="num" id="cdDays">00</span><span class="lbl">Days</span></div>
@@ -993,11 +993,8 @@ ul { list-style:none; }
         <div class="logo" style="color:#fff;"><div class="logo-icon"><i class="fas fa-paper-plane"></i></div> TripNest<span>X</span></div>
         <p>Your trusted travel partner since 2020. We make dream vacations affordable and hassle-free for millions of travelers worldwide.</p>
         <div class="footer-socials">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.instagram.com/tripnestx" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/919696171875" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
       <div class="footer-col">
@@ -1010,11 +1007,11 @@ ul { list-style:none; }
       </div>
       <div class="footer-col">
         <h4>Support</h4>
-        <a href="#">Help Center</a>
-        <a href="#">Contact Us</a>
-        <a href="#">Cancellation</a>
-        <a href="#">Refund Policy</a>
-        <a href="#">FAQs</a>
+        <a href="https://wa.me/919696171875?text=Hi%20I%20need%20help" target="_blank">Help Center</a>
+        <a href="https://wa.me/919696171875" target="_blank">Contact Us</a>
+        <a href="javascript:openCustomizeForm('')">Custom Booking</a>
+        <a href="mailto:abhishekshukla59701@gmail.com">Email Us</a>
+        <a href="https://wa.me/919696171875?text=Hi%20I%20have%20a%20question" target="_blank">FAQs</a>
       </div>
       <div class="footer-col">
         <h4>Top Destinations</h4>
@@ -1041,6 +1038,67 @@ ul { list-style:none; }
     </div>
   </div>
 </footer>
+
+<!-- ENQUIRY MODAL -->
+<div id="enquiryModal" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.6); backdrop-filter:blur(4px); align-items:center; justify-content:center; padding:20px;">
+  <div style="background:#fff; border-radius:20px; max-width:540px; width:100%; max-height:90vh; overflow-y:auto; padding:36px; position:relative; box-shadow:0 24px 60px rgba(0,0,0,0.2);">
+    <button onclick="closeEnquiryModal()" style="position:absolute; top:16px; right:16px; background:none; border:none; font-size:24px; color:#999; cursor:pointer;">&times;</button>
+    <h2 style="font-family:var(--font-display); font-size:24px; font-weight:800; color:var(--secondary); margin-bottom:6px;">Customize Your Trip</h2>
+    <p style="font-size:14px; color:var(--text-secondary); margin-bottom:24px;">Fill in your preferences and we'll create a personalized package for you!</p>
+    <form onsubmit="submitEnquiry(event)" style="display:flex; flex-direction:column; gap:14px;">
+      <input type="hidden" name="epkg" id="enquiryPkgName">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <div>
+          <label style="font-size:12px; font-weight:700; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.5px;">Full Name *</label>
+          <input name="ename" required placeholder="Your name" style="width:100%; padding:12px 14px; border:2px solid var(--border); border-radius:10px; font-size:14px; font-family:var(--font-body); margin-top:4px; outline:none; transition:var(--transition);" onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='var(--border)'">
+        </div>
+        <div>
+          <label style="font-size:12px; font-weight:700; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.5px;">Phone *</label>
+          <input name="ephone" required type="tel" placeholder="+91 XXXXX XXXXX" style="width:100%; padding:12px 14px; border:2px solid var(--border); border-radius:10px; font-size:14px; font-family:var(--font-body); margin-top:4px; outline:none; transition:var(--transition);" onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='var(--border)'">
+        </div>
+      </div>
+      <div>
+        <label style="font-size:12px; font-weight:700; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.5px;">Email *</label>
+        <input name="eemail" required type="email" placeholder="your@email.com" style="width:100%; padding:12px 14px; border:2px solid var(--border); border-radius:10px; font-size:14px; font-family:var(--font-body); margin-top:4px; outline:none; transition:var(--transition);" onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='var(--border)'">
+      </div>
+      <div>
+        <label style="font-size:12px; font-weight:700; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.5px;">Destination</label>
+        <input name="edest" placeholder="Where do you want to go?" style="width:100%; padding:12px 14px; border:2px solid var(--border); border-radius:10px; font-size:14px; font-family:var(--font-body); margin-top:4px; outline:none; transition:var(--transition);" onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='var(--border)'">
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <div>
+          <label style="font-size:12px; font-weight:700; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.5px;">No. of Travelers</label>
+          <select name="etravelers" style="width:100%; padding:12px 14px; border:2px solid var(--border); border-radius:10px; font-size:14px; font-family:var(--font-body); margin-top:4px; outline:none; background:#fff;">
+            <option>1 Person</option><option>2 People (Couple)</option><option>3-4 People (Family)</option><option>5-8 People (Group)</option><option>8+ People (Large Group)</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:12px; font-weight:700; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.5px;">Travel Dates</label>
+          <input name="edates" type="text" placeholder="e.g. 15 Mar - 20 Mar" style="width:100%; padding:12px 14px; border:2px solid var(--border); border-radius:10px; font-size:14px; font-family:var(--font-body); margin-top:4px; outline:none; transition:var(--transition);" onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='var(--border)'">
+        </div>
+      </div>
+      <div>
+        <label style="font-size:12px; font-weight:700; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.5px;">Budget (per person)</label>
+        <select name="ebudget" style="width:100%; padding:12px 14px; border:2px solid var(--border); border-radius:10px; font-size:14px; font-family:var(--font-body); margin-top:4px; outline:none; background:#fff;">
+          <option>Under ₹10,000</option><option>₹10,000 - ₹25,000</option><option>₹25,000 - ₹50,000</option><option>₹50,000 - ₹1,00,000</option><option>₹1,00,000+</option><option>Flexible</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-size:12px; font-weight:700; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.5px;">Special Requests</label>
+        <textarea name="enotes" rows="3" placeholder="Honeymoon, adventure activities, specific hotel, dietary needs..." style="width:100%; padding:12px 14px; border:2px solid var(--border); border-radius:10px; font-size:14px; font-family:var(--font-body); margin-top:4px; outline:none; resize:vertical; transition:var(--transition);" onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+      </div>
+      <button type="submit" style="padding:16px; border-radius:14px; background:linear-gradient(135deg, var(--primary), var(--primary-dark)); color:#fff; font-size:16px; font-weight:700; border:none; cursor:pointer; margin-top:4px; box-shadow:0 6px 20px rgba(255,75,18,0.3); transition:var(--transition); display:flex; align-items:center; justify-content:center; gap:8px;">
+        <i class="fas fa-paper-plane"></i> Submit Enquiry
+      </button>
+      <p style="text-align:center; font-size:12px; color:var(--text-light);">We'll get back to you within 2 hours!</p>
+    </form>
+  </div>
+</div>
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/919696171875?text=Hi%20TripNestX!%20I%20need%20help%20planning%20my%20trip." target="_blank" style="position:fixed; bottom:30px; left:30px; z-index:998; width:56px; height:56px; border-radius:50%; background:#25D366; display:flex; align-items:center; justify-content:center; color:#fff; font-size:28px; box-shadow:0 4px 20px rgba(37,211,102,0.4); transition:all 0.3s ease; text-decoration:none;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+  <i class="fab fa-whatsapp"></i>
+</a>
 
 <!-- BACK TO TOP -->
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0})"><i class="fas fa-arrow-up"></i></button>
@@ -1203,7 +1261,10 @@ function renderPackages() {
             <div class="old-price">${p.old}</div>
             <div class="current-price">${p.price} <span class="per">/person</span></div>
           </div>
-          <button class="pkg-book" onclick="handleBook('${p.name}')">Book Now</button>
+          <div style="display:flex;gap:6px;">
+            <button class="pkg-book" onclick="handleBook('${p.name}')" title="Book via WhatsApp">Book Now</button>
+            <button class="pkg-book" style="background:var(--primary);" onclick="openCustomizeForm('${p.name}')" title="Customize this package">✏️</button>
+          </div>
         </div>
       </div>
     </div>`;
@@ -1293,13 +1354,66 @@ function handleSearch() {
 }
 
 function handleBook(name) {
-  alert(`🎉 Great choice! Redirecting to booking for "${name}"...\n\nIn the live version, this will connect to the booking engine.`);
+  const msg = encodeURIComponent(`Hi TripNestX! I'm interested in booking: ${name}. Please share more details.`);
+  window.open(`https://wa.me/919696171875?text=${msg}`, '_blank');
+}
+
+function openCustomizeForm(pkgName) {
+  document.getElementById('enquiryPkgName').value = pkgName || '';
+  document.getElementById('enquiryModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeEnquiryModal() {
+  document.getElementById('enquiryModal').style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+function submitEnquiry(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = {
+    name: form.ename.value,
+    phone: form.ephone.value,
+    email: form.eemail.value,
+    pkg: form.epkg.value,
+    dest: form.edest.value,
+    travelers: form.etravelers.value,
+    dates: form.edates.value,
+    budget: form.ebudget.value,
+    notes: form.enotes.value
+  };
+  
+  // Send via EmailJS or mailto fallback
+  const subject = encodeURIComponent(`New Enquiry: ${data.pkg || data.dest} — ${data.name}`);
+  const body = encodeURIComponent(
+    `New Booking Enquiry from TripNestX.com\n\n` +
+    `Name: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\n` +
+    `Package: ${data.pkg}\nDestination: ${data.dest}\n` +
+    `Travelers: ${data.travelers}\nPreferred Dates: ${data.dates}\n` +
+    `Budget: ${data.budget}\nSpecial Requests: ${data.notes}`
+  );
+  window.open(`mailto:abhishekshukla59701@gmail.com?subject=${subject}&body=${body}`);
+  
+  // Also send WhatsApp notification
+  const waMsg = encodeURIComponent(
+    `🔔 New Enquiry!\nName: ${data.name}\nPhone: ${data.phone}\nPackage: ${data.pkg || data.dest}\nTravelers: ${data.travelers}\nDates: ${data.dates}\nBudget: ${data.budget}`
+  );
+  window.open(`https://wa.me/919696171875?text=${waMsg}`, '_blank');
+  
+  closeEnquiryModal();
+  alert('✅ Enquiry submitted! We will contact you within 2 hours.');
+  form.reset();
 }
 
 function handleNewsletter(e) {
   e.preventDefault();
   const input = e.target.querySelector('input');
-  alert(`✅ Thanks for subscribing! Check ${input.value} for a ₹500 welcome coupon.`);
+  const email = input.value;
+  // Send notification
+  const waMsg = encodeURIComponent(`📧 New Subscriber: ${email}`);
+  fetch(`https://wa.me/919696171875?text=${waMsg}`);
+  alert(`✅ Thanks for subscribing! You'll receive exclusive deals at ${email}`);
   input.value = '';
 }
 
@@ -1383,6 +1497,17 @@ window.addEventListener('DOMContentLoaded', () => {
   const today = new Date().toISOString().split('T')[0];
   const dateInput = document.getElementById('travelDate');
   if(dateInput) { dateInput.min = today; dateInput.value = today; }
+  
+  // Prevent Travelpayouts from opening background tabs (Booking.com fix)
+  // Override window.open to block unwanted popups from TP widget
+  const originalOpen = window.open;
+  window.open = function(url, target, features) {
+    if(url && (url.includes('booking.com') || url.includes('bstatic.com')) && target !== '_blank') {
+      console.log('Blocked background tab:', url);
+      return null;
+    }
+    return originalOpen.call(window, url, target, features);
+  };
 });
 </script>
 
