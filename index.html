@@ -144,9 +144,9 @@ ul { list-style:none; }
 .hero {
   position:relative; min-height:92vh; display:flex; align-items:center;
   background: linear-gradient(165deg, #0A1628 0%, #162544 40%, #1B3A5C 70%, #0A1628 100%);
-  padding-top:72px; overflow:hidden;
+  padding-top:72px;
 }
-.hero::before {
+  .hero::before {
   content:''; position:absolute; inset:0;
   background: radial-gradient(ellipse at 70% 20%, rgba(255,75,18,0.12) 0%, transparent 55%),
               radial-gradient(ellipse at 20% 80%, rgba(0,201,167,0.08) 0%, transparent 50%);
@@ -195,25 +195,28 @@ ul { list-style:none; }
 
 /* ========== SEARCH BOX ========== */
 .search-box {
-  background: rgba(255,255,255,0.97); border-radius:20px;
-  box-shadow: var(--shadow-xl); max-width:900px;
+  background: #fff; border-radius:16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3); max-width:950px;
+  margin: 0 auto;
   animation: fadeInUp 0.6s ease 0.3s both;
-  overflow: visible;
+  position: relative; z-index: 100;
+  overflow: visible !important;
 }
 .search-tabs {
-  display:flex; border-bottom:2px solid var(--border);
+  display:flex; border-bottom:1px solid #E8ECF4;
+  background: #f8f9fc; border-radius: 16px 16px 0 0;
 }
 .search-tab {
-  flex:1; padding:16px 20px; text-align:center;
-  font-size:14px; font-weight:700; color:var(--text-secondary);
+  flex:1; padding:18px 20px; text-align:center;
+  font-size:15px; font-weight:800; color:#5A6175;
   background:transparent; transition:var(--transition);
   display:flex; align-items:center; justify-content:center; gap:8px;
-  border-bottom:3px solid transparent; margin-bottom:-2px;
+  border-bottom:3px solid transparent; margin-bottom:-1px;
 }
-.search-tab:hover { color:var(--primary); background:rgba(255,75,18,0.03); }
+.search-tab:hover { color:var(--primary); }
 .search-tab.active {
   color:var(--primary); border-bottom-color:var(--primary);
-  background: rgba(255,75,18,0.04);
+  background: #fff;
 }
 .search-tab i { font-size:16px; }
 
@@ -858,7 +861,7 @@ ul { list-style:none; }
         <button class="search-tab" onclick="switchRealTab('cabs', this)"><i class="fas fa-car"></i> Cabs</button>
       </div>
 
-      <div style="padding: 20px; background: white; border-radius: 0 0 20px 20px; min-height: 150px;">
+      <div style="padding: 10px 25px 25px 25px; background: #fff; border-radius: 0 0 16px 16px; position: relative; z-index: 101;">
         
         <div id="widget-flights" style="display:block;">
           <script async src="https://tpwgts.com/content?currency=inr&trs=504149&shmarker=707698&show_hotels=false&powered_by=false&locale=en&searchUrl=booking.tripnestx.com%2Fflights&primary_override=%23FF4B12&color_button=%23FF4B12&color_icons=%23FF4B12&dark=%23262626&light=%23FFFFFF&secondary=%23FFFFFF&special=%23C4C4C4&color_focused=%23FF4B12&border_radius=14&plain=true&promo_id=7879&campaign_id=100" charset="utf-8"></script>
@@ -1636,4 +1639,5 @@ window.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+
 
