@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Package Details — TripNestX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{--primary:#FF4B12;--primary-dark:#E03A00;--primary-light:#FF7A50;--secondary:#0A1628;--accent:#00C9A7;--accent-2:#FFB800;--bg:#FAFBFE;--text:#1A1A2E;--text-secondary:#5A6175;--text-light:#8B92A5;--border:#E8ECF4;--shadow-md:0 4px 16px rgba(0,0,0,0.08);--radius:16px;--font-display:'Playfair Display',serif;--font-body:'Plus Jakarta Sans','DM Sans',sans-serif;--transition:all .3s cubic-bezier(.4,0,.2,1)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:var(--font-body);color:var(--text);background:var(--bg)}a{text-decoration:none;color:inherit}img{max-width:100%;display:block}button{cursor:pointer;border:none;font-family:var(--font-body)}.container{max-width:1280px;margin:0 auto;padding:0 24px}
+
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1280px;margin:0 auto;padding:0 24px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:24px;font-weight:800;color:var(--secondary)}
+.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--primary),var(--primary-light));border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px}
+.logo span{color:var(--primary)}
+.nav-btns{display:flex;gap:10px}.nav-btns a{padding:10px 20px;border-radius:50px;font-size:13px;font-weight:700;transition:var(--transition)}
+.btn-back{border:2px solid var(--border);color:var(--text)}.btn-back:hover{border-color:var(--primary);color:var(--primary)}
+.btn-wa{background:#25D366;color:#fff;display:inline-flex;align-items:center;gap:6px}
+
+.detail-hero{position:relative;height:420px;margin-top:64px;overflow:hidden}
+.detail-hero img{width:100%;height:100%;object-fit:cover}
+.detail-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,.85) 0%,rgba(10,22,40,.3) 50%,transparent 100%)}
+.detail-hero-info{position:absolute;bottom:0;left:0;right:0;padding:40px}
+.detail-hero-info .container{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.hero-left h1{font-family:var(--font-display);font-size:clamp(28px,4vw,42px);font-weight:800;color:#fff;margin-bottom:10px}
+.hero-meta{display:flex;gap:20px;flex-wrap:wrap}.hero-meta-item{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.8);font-size:14px;font-weight:600}.hero-meta-item i{color:var(--primary)}
+.hero-right{text-align:right}.hero-price-label{font-size:13px;color:rgba(255,255,255,.6)}.hero-price{font-family:var(--font-display);font-size:36px;font-weight:800;color:#fff}.hero-price span{font-size:14px;font-weight:400;color:rgba(255,255,255,.5)}
+.breadcrumb{padding:16px 0;font-size:13px;color:var(--text-light)}.breadcrumb a{color:var(--primary);font-weight:600}
+
+.detail-layout{display:grid;grid-template-columns:1fr 380px;gap:30px;padding-bottom:60px}
+.section-block{background:#fff;border-radius:var(--radius);padding:28px;margin-bottom:24px;border:1px solid var(--border)}
+.section-block h2{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--secondary);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.section-block h2 i{color:var(--primary);font-size:20px}
+.overview-text{font-size:15px;line-height:1.8;color:var(--text-secondary)}
+.highlights-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.highlight-item{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:rgba(255,75,18,.04);border-radius:10px;font-size:14px;font-weight:600;color:var(--text)}
+.highlight-item i{color:var(--accent);font-size:16px;margin-top:2px;flex-shrink:0}
+
+.itinerary-timeline{position:relative;padding-left:30px}
+.itinerary-timeline::before{content:'';position:absolute;left:12px;top:10px;bottom:10px;width:2px;background:linear-gradient(to bottom,var(--primary),var(--accent));border-radius:2px}
+.itin-day{position:relative;margin-bottom:24px}.itin-day:last-child{margin-bottom:0}
+.itin-dot{position:absolute;left:-24px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--primary);border:3px solid #fff;box-shadow:0 0 0 2px var(--primary)}
+.itin-header{display:flex;align-items:center;gap:10px;cursor:pointer;padding:12px 16px;background:#f8f9fc;border-radius:12px;transition:var(--transition)}
+.itin-header:hover{background:rgba(255,75,18,.06)}
+.itin-day-num{background:var(--primary);color:#fff;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:800;white-space:nowrap}
+.itin-day-title{font-size:15px;font-weight:700;color:var(--text);flex:1}
+.itin-toggle{color:var(--text-light);font-size:14px;transition:var(--transition)}
+.itin-body{padding:16px 16px 0;display:none}.itin-body.show{display:block}
+.itin-desc{font-size:14px;line-height:1.7;color:var(--text-secondary);margin-bottom:12px}
+.itin-tags{display:flex;gap:10px;flex-wrap:wrap}
+.itin-tag{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:700}
+.tag-meal{background:rgba(255,184,0,.1);color:#B8860B}.tag-stay{background:rgba(0,201,167,.1);color:#00896F}
+
+.inc-exc-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.inc-list,.exc-list{list-style:none}
+.inc-list li,.exc-list li{padding:8px 0;font-size:14px;display:flex;align-items:flex-start;gap:10px;border-bottom:1px solid #f0f2f5}
+.inc-list li:last-child,.exc-list li:last-child{border-bottom:none}
+.inc-list li i{color:var(--accent);margin-top:3px}.exc-list li i{color:#E74C3C;margin-top:3px}
+
+.sidebar-sticky{position:sticky;top:80px}
+.price-card{background:#fff;border-radius:var(--radius);padding:28px;border:1px solid var(--border);margin-bottom:20px;box-shadow:var(--shadow-md)}
+.price-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.price-tab{flex:1;padding:10px 8px;border-radius:10px;text-align:center;font-size:12px;font-weight:700;border:2px solid var(--border);transition:var(--transition);min-width:90px;background:#fff}
+.price-tab:hover{border-color:var(--primary)}.price-tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.price-tab .tab-label{display:block;margin-bottom:4px}.price-tab .tab-price{font-size:16px;font-weight:800}
+.price-display{text-align:center;padding:20px 0;border-bottom:1px solid var(--border);margin-bottom:20px}
+.price-display .label{font-size:12px;color:var(--text-light);text-transform:uppercase;letter-spacing:1px}
+.price-display .amount{font-family:var(--font-display);font-size:38px;font-weight:800;color:var(--primary)}
+.price-display .per{font-size:13px;color:var(--text-light)}
+.price-includes{margin-bottom:20px;list-style:none}.price-includes li{font-size:13px;color:var(--text-secondary);padding:6px 0;display:flex;align-items:center;gap:8px}.price-includes li i{color:var(--accent);font-size:14px}
+.btn-book{width:100%;padding:16px;border-radius:14px;font-size:16px;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:center;gap:8px;transition:var(--transition);margin-bottom:10px}
+.btn-book-primary{background:linear-gradient(135deg,var(--primary),var(--primary-dark));box-shadow:0 6px 20px rgba(255,75,18,.3)}.btn-book-primary:hover{transform:translateY(-2px)}
+.btn-book-wa{background:#25D366;box-shadow:0 6px 20px rgba(37,211,102,.3)}.btn-book-wa:hover{transform:translateY(-2px)}
+.btn-book-call{background:var(--secondary)}
+.share-row{display:flex;gap:8px;justify-content:center;margin-top:16px}
+.share-btn{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;background:#f0f2f5;color:var(--text-secondary);transition:var(--transition)}.share-btn:hover{background:var(--primary);color:#fff}
+
+.loading{text-align:center;padding:100px 20px}.loading i{font-size:40px;color:var(--primary);animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+
+.footer-mini{background:var(--secondary);color:rgba(255,255,255,.5);padding:24px 0;text-align:center;font-size:13px;margin-top:40px}
+.footer-mini a{color:var(--primary-light)}
+
+@media(max-width:900px){.detail-layout{grid-template-columns:1fr}.detail-hero{height:280px}.detail-hero-info .container{flex-direction:column;align-items:flex-start}.hero-right{text-align:left}.highlights-grid,.inc-exc-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.detail-hero{height:220px}.hero-left h1{font-size:24px}.price-tabs{flex-direction:column}}
+</style>
+</head>
+<body>
+<nav class="navbar"><div class="nav-inner">
+  <a href="index.html" class="logo"><div class="logo-icon"><i class="fas fa-paper-plane"></i></div> TripNest<span>X</span></a>
+  <div class="nav-btns"><a href="index.html#packages" class="btn-back"><i class="fas fa-arrow-left"></i> All Packages</a><a href="https://wa.me/919696171875?text=Hi%20TripNestX!" target="_blank" class="btn-wa"><i class="fab fa-whatsapp"></i> Chat</a></div>
+</div></nav>
+
+<div id="pageContent"><div class="loading" style="margin-top:120px;"><i class="fas fa-spinner"></i><p style="margin-top:20px;font-size:16px;color:var(--text-secondary);">Loading package details...</p></div></div>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const packageId = urlParams.get('id');
+
+let currentPricing = {};
+
+function switchPrice(key, el) {
+  document.querySelectorAll('.price-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('selectedPrice').textContent = '₹' + currentPricing[key].price.toLocaleString('en-IN');
+}
+
+function toggleDay(el) {
+  const body = el.nextElementSibling;
+  const icon = el.querySelector('.itin-toggle');
+  const isOpen = body.classList.contains('show');
+  // Close all
+  document.querySelectorAll('.itin-body').forEach(b => b.classList.remove('show'));
+  document.querySelectorAll('.itin-toggle').forEach(i => { i.classList.remove('fa-chevron-up'); i.classList.add('fa-chevron-down'); });
+  if (!isOpen) {
+    body.classList.add('show');
+    icon.classList.remove('fa-chevron-down');
+    icon.classList.add('fa-chevron-up');
+  }
+}
+
+function openEnquiry(pkgName) {
+  // Check if parent page has the modal
+  if (typeof window.opener !== 'undefined' && window.opener) {
+    window.opener.openCustomizeForm(pkgName);
+  } else {
+    // Redirect to index with enquiry param
+    window.location.href = 'index.html?enquiry=' + encodeURIComponent(pkgName);
+  }
+}
+
+async function init() {
+  let packages = [];
+  try {
+    const resp = await fetch('data/packages.json');
+    packages = await resp.json();
+  } catch(e) {
+    document.getElementById('pageContent').innerHTML = '<div class="loading" style="margin-top:120px;"><h2>Could not load data</h2><p style="margin-top:10px;"><a href="index.html#packages" style="color:var(--primary);">Browse all packages</a></p></div>';
+    return;
+  }
+
+  const pkg = packages.find(p => p.id === packageId);
+  if (!pkg) {
+    document.getElementById('pageContent').innerHTML = '<div class="loading" style="margin-top:120px;"><h2>Package not found</h2><p style="margin-top:10px;"><a href="index.html#packages" style="color:var(--primary);">Browse all packages</a></p></div>';
+    return;
+  }
+
+  currentPricing = pkg.pricing;
+  document.title = pkg.name + ' — TripNestX';
+
+  const pKeys = Object.keys(pkg.pricing);
+  const firstKey = pKeys[0];
+  const waMsg = encodeURIComponent('Hi TripNestX! I am interested in: ' + pkg.name + ' (' + pkg.duration.nights + 'N/' + pkg.duration.days + 'D). Please share details and availability.');
+
+  document.getElementById('pageContent').innerHTML = `
+  <div class="detail-hero">
+    <img src="${pkg.img}" alt="${pkg.name}">
+    <div class="detail-hero-overlay"></div>
+    <div class="detail-hero-info"><div class="container">
+      <div class="hero-left">
+        <h1>${pkg.name}</h1>
+        <div class="hero-meta">
+          <div class="hero-meta-item"><i class="fas fa-map-marker-alt"></i> ${pkg.destination}, ${pkg.country}</div>
+          <div class="hero-meta-item"><i class="fas fa-clock"></i> ${pkg.duration.nights}N / ${pkg.duration.days}D</div>
+          <div class="hero-meta-item"><i class="fas fa-star"></i> ${pkg.rating} (${pkg.reviews.toLocaleString()} reviews)</div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-price-label">Starts from</div>
+        <div class="hero-price">₹${pkg.startPrice.toLocaleString('en-IN')}<span>/person</span></div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> › <a href="index.html#packages">Packages</a> › ${pkg.name}</div>
+  </div>
+
+  <div class="container"><div class="detail-layout">
+    <div class="detail-left">
+      <div class="section-block">
+        <h2><i class="fas fa-info-circle"></i> Overview</h2>
+        <p class="overview-text">${pkg.overview}</p>
+        <div class="highlights-grid">${pkg.highlights.map(h => '<div class="highlight-item"><i class="fas fa-check-circle"></i> '+h+'</div>').join('')}</div>
+      </div>
+
+      <div class="section-block">
+        <h2><i class="fas fa-route"></i> Day-wise Itinerary</h2>
+        <div class="itinerary-timeline">
+          ${pkg.itinerary.map((day, i) => `
+          <div class="itin-day">
+            <div class="itin-dot"></div>
+            <div class="itin-header" onclick="toggleDay(this)">
+              <span class="itin-day-num">Day ${day.day}</span>
+              <span class="itin-day-title">${day.title}</span>
+              <i class="fas ${i===0?'fa-chevron-up':'fa-chevron-down'} itin-toggle"></i>
+            </div>
+            <div class="itin-body ${i===0?'show':''}">
+              <p class="itin-desc">${day.desc}</p>
+              <div class="itin-tags">
+                ${day.meals ? '<span class="itin-tag tag-meal"><i class="fas fa-utensils"></i> '+day.meals+'</span>' : ''}
+                ${day.stay ? '<span class="itin-tag tag-stay"><i class="fas fa-bed"></i> '+day.stay+'</span>' : ''}
+              </div>
+            </div>
+          </div>`).join('')}
+        </div>
+      </div>
+
+      <div class="section-block">
+        <h2><i class="fas fa-list-check"></i> Inclusions & Exclusions</h2>
+        <div class="inc-exc-grid">
+          <div>
+            <h3 style="font-size:15px;font-weight:700;color:var(--accent);margin-bottom:12px;"><i class="fas fa-check-circle"></i> What's Included</h3>
+            <ul class="inc-list">${pkg.inclusions.map(x => '<li><i class="fas fa-check"></i><span>'+x+'</span></li>').join('')}</ul>
+          </div>
+          <div>
+            <h3 style="font-size:15px;font-weight:700;color:#E74C3C;margin-bottom:12px;"><i class="fas fa-times-circle"></i> Not Included</h3>
+            <ul class="exc-list">${pkg.exclusions.map(x => '<li><i class="fas fa-times"></i><span>'+x+'</span></li>').join('')}</ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-right"><div class="sidebar-sticky">
+      <div class="price-card">
+        <h3 style="font-size:16px;font-weight:800;color:var(--secondary);margin-bottom:16px;text-align:center;">Choose Your Package</h3>
+        <div class="price-tabs">
+          ${pKeys.map((key, i) => '<button class="price-tab '+(i===0?'active':'')+'" onclick="switchPrice(\''+key+'\',this)"><span class="tab-label">'+pkg.pricing[key].label+'</span><span class="tab-price">₹'+pkg.pricing[key].price.toLocaleString('en-IN')+'</span></button>').join('')}
+        </div>
+        <div class="price-display">
+          <div class="label">Price Per Person</div>
+          <div class="amount" id="selectedPrice">₹${pkg.pricing[firstKey].price.toLocaleString('en-IN')}</div>
+          <div class="per">per person on twin sharing</div>
+        </div>
+        <ul class="price-includes">
+          <li><i class="fas fa-check"></i> ${pkg.duration.nights}N / ${pkg.duration.days}D Accommodation</li>
+          <li><i class="fas fa-check"></i> Meals as per itinerary</li>
+          <li><i class="fas fa-check"></i> All transfers & sightseeing</li>
+          <li><i class="fas fa-check"></i> 24/7 on-trip support</li>
+        </ul>
+        <button class="btn-book btn-book-primary" onclick="window.location.href='index.html?enquiry=${encodeURIComponent(pkg.name)}'"><i class="fas fa-paper-plane"></i> Get Customized Quote</button>
+        <a href="https://wa.me/919696171875?text=${waMsg}" target="_blank" class="btn-book btn-book-wa" style="text-decoration:none;"><i class="fab fa-whatsapp"></i> WhatsApp Expert</a>
+        <a href="tel:+919696171875" class="btn-book btn-book-call" style="text-decoration:none;"><i class="fas fa-phone"></i> Call Now</a>
+        <div class="share-row">
+          <a class="share-btn" href="https://wa.me/?text=${encodeURIComponent(pkg.name+' - Check this package! '+window.location.href)}" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.href);alert('Link copied!')"><i class="fas fa-link"></i></button>
+        </div>
+      </div>
+
+      <div style="background:#fff;border-radius:var(--radius);padding:20px;border:1px solid var(--border);text-align:center;">
+        <p style="font-size:14px;color:var(--text-secondary);margin-bottom:12px;">Need help deciding?</p>
+        <p style="font-size:20px;font-weight:800;color:var(--primary);"><i class="fas fa-phone"></i> +91 96961 71875</p>
+        <p style="font-size:12px;color:var(--text-light);margin-top:6px;">Available 24/7 — Free consultation</p>
+      </div>
+    </div></div>
+  </div></div>
+
+  <div class="footer-mini"><div class="container">© 2026 <a href="index.html">TripNestX</a> Travel Pvt. Ltd. All rights reserved.</div></div>
+  `;
+}
+
+init();
+</script>
+</body>
+</html>

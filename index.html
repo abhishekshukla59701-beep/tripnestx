@@ -1245,6 +1245,8 @@ ul { list-style:none; }
 <!-- BACK TO TOP -->
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0})"><i class="fas fa-arrow-up"></i></button>
 
+<script src="data/packages-inline.js"></script>
+
 <script>
 
 function switchRealTab(tabId, el) {
@@ -1366,7 +1368,7 @@ function renderPackages() {
           
           <div style="display:flex; gap:8px;">
             <button onclick="handleBook('${p.name}')" style="background:#25D366; color:#fff; border:none; width:36px; height:36px; border-radius:8px; cursor:pointer; font-size:18px; display:flex; align-items:center; justify-content:center; transition:0.3s;" title="WhatsApp Expert"><i class="fab fa-whatsapp"></i></button>
-            <button onclick="openCustomizeForm('${p.name}')" style="background:#FF4B12; color:#fff; border:none; padding:0 16px; height:36px; border-radius:8px; cursor:pointer; font-size:13px; font-weight:700; transition:0.3s;">Details</button>
+            <a href="package-detail.html?id=${p.id}" style="background:#FF4B12; color:#fff; border:none; padding:0 16px; height:36px; border-radius:8px; cursor:pointer; font-size:13px; font-weight:700; transition:0.3s; display:inline-flex; align-items:center; text-decoration:none;">View Details</a>
           </div>
         </div>
       </div>
@@ -1375,7 +1377,7 @@ function renderPackages() {
 
   const btn = document.getElementById('loadMoreBtn');
   if(btn) btn.style.display = showCount >= filtered.length ? 'none' : 'inline-flex';
-}
+
   setTimeout(initScrollAnimations, 100);
 }
 
@@ -1611,6 +1613,12 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     return originalOpen.call(window, url, target, features);
   };
+
+  // NAYA LOGIC: Detail page se wapas aane par form auto-open karega
+  const uParams = new URLSearchParams(window.location.search);
+  if (uParams.get('enquiry')) {
+    setTimeout(() => openCustomizeForm(decodeURIComponent(uParams.get('enquiry'))), 500);
+  }
 });
 </script>
 
