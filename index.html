@@ -120,7 +120,7 @@ ul { list-style:none; }
 .mobile-menu-btn { display:none; background:none; font-size:24px; color:var(--text); }
 
 /* ========== MEGA MENU (Bharat Booking Style) ========== */
-.nav-item-dropdown { position: relative; height: 100%; display: flex; align-items: center; }
+.nav-item-dropdown { position: relative; height: 100%; display: flex; align-items: center; padding: 20px 0; }
 .nav-item-dropdown > a { display: flex; align-items: center; gap: 6px; cursor: pointer; }
 .mega-menu {
   position: absolute; top: 90px; left: 50%; transform: translateX(-50%);
@@ -131,13 +131,15 @@ ul { list-style:none; }
   transition: all 0.3s ease; border-top: 4px solid var(--primary);
   text-align: left;
 }
-.nav-item-dropdown:hover .mega-menu { opacity: 1; visibility: visible; pointer-events: auto; top: 70px; }
+/* INVISIBLE BRIDGE - Iski wajah se menu gayab nahi hoga */
+.mega-menu::before { content: ''; position: absolute; top: -30px; left: 0; right: 0; height: 30px; background: transparent; }
+
+.nav-item-dropdown:hover .mega-menu { opacity: 1; visibility: visible; pointer-events: auto; top: 60px; }
 .mega-col h4 { font-size: 15px; font-weight: 800; color: var(--secondary); margin-bottom: 15px; border-bottom: 1px solid #E8ECF4; padding-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;}
 .mega-col h4 span { color: var(--primary); }
 .mega-col a { display: block; font-size: 14px; font-weight: 600; color: var(--text-secondary); padding: 8px 0 !important; transition: 0.2s; border-radius:0 !important; background:transparent !important; }
 .mega-col a:hover { color: var(--primary) !important; transform: translateX(5px); }
-.mega-col a.view-all { color: var(--primary); font-weight: 800; margin-top: 10px; font-size: 13px; }
-  
+.mega-col a.view-all { color: var(--primary); font-weight: 800; margin-top: 10px; font-size: 13px; }  
 /* ========== HERO ========== */
 .hero {
   position:relative; min-height:92vh; display:flex; align-items:center;
