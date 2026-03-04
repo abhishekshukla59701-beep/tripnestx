@@ -957,10 +957,10 @@ ul { list-style:none; }
 <!-- POPULAR DESTINATIONS -->
 <section class="section" id="destinations">
   <div class="container">
-    <div class="section-header animate-on-scroll">
-      <div class="section-label">Popular Destinations</div>
-      <h2 class="section-title">Trending Places to Visit</h2>
-      <p class="section-desc">Handpicked destinations loved by millions of travelers from around the world</p>
+<div class="section-header animate-on-scroll">
+      <div class="section-label">Find Your Perfect Trip</div>
+      <h2 class="section-title">Holiday <span style="color:#FF4B12;">Categories</span></h2>
+      <p class="section-desc">Explore our meticulously crafted holiday tour packages for all ages and interests.</p>
     </div>
     <div class="dest-grid" id="destGrid"></div>
   </div>
@@ -1203,109 +1203,41 @@ function switchRealTab(tabId, el) {
   document.getElementById('widget-' + tabId).style.display = 'block';
 }
 // ==================== DATA ====================
-const destinations = [
-  { name:"Maldives", country:"Indian Ocean", img:"https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&h=400&fit=crop", price:"₹39,999", trips:"12K+ booked" },
-  { name:"Dubai", country:"UAE", img:"https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&h=400&fit=crop", price:"₹29,999", trips:"25K+ booked" },
-  { name:"Bali", country:"Indonesia", img:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&h=400&fit=crop", price:"₹24,999", trips:"18K+ booked" },
-  { name:"Paris", country:"France", img:"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&h=400&fit=crop", price:"₹79,999", trips:"8K+ booked" },
-  { name:"Goa", country:"India", img:"https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600&h=400&fit=crop", price:"₹4,999", trips:"45K+ booked" },
-  { name:"Bangkok", country:"Thailand", img:"https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600&h=400&fit=crop", price:"₹14,999", trips:"30K+ booked" },
-  { name:"Singapore", country:"Asia", img:"https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&h=400&fit=crop", price:"₹34,999", trips:"15K+ booked" },
-  { name:"Kashmir", country:"India", img:"https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&h=400&fit=crop", price:"₹12,999", trips:"20K+ booked" },
+// Naye Square Categories Data
+const categories = [
+  { name: "Family Trip", tours: "52 Packages", img: "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&h=600&fit=crop" },
+  { name: "Honeymoon Trip", tours: "49 Packages", img: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=600&h=600&fit=crop" },
+  { name: "Pilgrimage Tours", tours: "38 Packages", img: "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?w=600&h=600&fit=crop" },
+  { name: "International", tours: "85 Packages", img: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&h=600&fit=crop" },
+  { name: "Adventure Trips", tours: "24 Packages", img: "https://images.unsplash.com/photo-1533692328991-08159ff19fca?w=600&h=600&fit=crop" },
+  { name: "Weekend Getaways", tours: "30 Packages", img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=600&fit=crop" }
 ];
 
-const allPackages = [
-  // DOMESTIC
-  { cat:"Domestic", name:"Royal Rajasthan Heritage Tour", loc:"Jaipur, Udaipur, Jodhpur", days:"6N/7D", people:"2", rating:4.8, reviews:342, old:"₹35,999", price:"₹24,999", badge:"hot", img:"https://images.unsplash.com/photo-1599661046289-e31897846e41?w=600&h=400&fit=crop" },
-  { cat:"Domestic", name:"Kerala Backwaters Luxury Escape", loc:"Alleppey, Munnar, Kochi", days:"5N/6D", people:"2", rating:4.9, reviews:567, old:"₹28,999", price:"₹19,999", badge:"sale", img:"https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&h=400&fit=crop" },
-  { cat:"Domestic", name:"Goa Beach Paradise Getaway", loc:"North & South Goa", days:"4N/5D", people:"2", rating:4.7, reviews:890, old:"₹15,999", price:"₹9,999", badge:"hot", img:"https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600&h=400&fit=crop" },
-  { cat:"Domestic", name:"Manali Adventure Trek Package", loc:"Manali, Solang, Rohtang", days:"5N/6D", people:"2-4", rating:4.6, reviews:234, old:"₹22,999", price:"₹14,999", badge:"new", img:"https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&h=400&fit=crop" },
-  { cat:"Domestic", name:"Kashmir Heaven on Earth", loc:"Srinagar, Pahalgam, Gulmarg", days:"6N/7D", people:"2", rating:4.9, reviews:456, old:"₹32,999", price:"₹21,999", badge:"hot", img:"https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&h=400&fit=crop" },
-  { cat:"Domestic", name:"Andaman Islands Snorkeling Tour", loc:"Port Blair, Havelock, Neil", days:"5N/6D", people:"2", rating:4.8, reviews:321, old:"₹38,999", price:"₹27,999", badge:"sale", img:"https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&h=400&fit=crop" },
-  { cat:"Domestic", name:"Ladakh Bike Expedition", loc:"Leh, Nubra, Pangong", days:"7N/8D", people:"Group", rating:4.7, reviews:178, old:"₹29,999", price:"₹19,999", badge:"new", img:"https://images.unsplash.com/photo-1626015365107-10a8a5aa4ab4?w=600&h=400&fit=crop" },
-  { cat:"Domestic", name:"Rishikesh Rafting & Yoga", loc:"Rishikesh, Haridwar", days:"3N/4D", people:"2-6", rating:4.5, reviews:543, old:"₹12,999", price:"₹7,999", badge:"", img:"https://images.unsplash.com/photo-1600804340584-c7db2eacf0bf?w=600&h=400&fit=crop" },
-  { cat:"Domestic", name:"Shimla-Kullu Romance Package", loc:"Shimla, Kullu, Manali", days:"5N/6D", people:"2", rating:4.6, reviews:678, old:"₹25,999", price:"₹16,999", badge:"sale", img:"https://images.unsplash.com/photo-1597074866923-dc0589150458?w=600&h=400&fit=crop" },
-  { cat:"Domestic", name:"Varanasi Spiritual Journey", loc:"Varanasi, Sarnath", days:"3N/4D", people:"2", rating:4.4, reviews:234, old:"₹14,999", price:"₹8,999", badge:"", img:"https://images.unsplash.com/photo-1561361513-2d000a50f0dc?w=600&h=400&fit=crop" },
-  { cat:"Domestic", name:"Ooty & Coorg Nature Retreat", loc:"Ooty, Coorg, Mysore", days:"5N/6D", people:"2-4", rating:4.7, reviews:345, old:"₹21,999", price:"₹14,999", badge:"new", img:"https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=600&h=400&fit=crop" },
-  { cat:"Domestic", name:"Darjeeling & Gangtok Combo", loc:"Darjeeling, Gangtok", days:"6N/7D", people:"2", rating:4.5, reviews:267, old:"₹27,999", price:"₹18,999", badge:"", img:"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop" },
-  { cat:"Domestic", name:"Jim Corbett Wildlife Safari", loc:"Jim Corbett, Nainital", days:"3N/4D", people:"2-4", rating:4.6, reviews:189, old:"₹18,999", price:"₹11,999", badge:"", img:"https://images.unsplash.com/photo-1549366021-9f761d450615?w=600&h=400&fit=crop" },
-
-  // INTERNATIONAL
-  { cat:"International", name:"Maldives All-Inclusive Paradise", loc:"Malé, Resort Island", days:"4N/5D", people:"2", rating:4.9, reviews:789, old:"₹89,999", price:"₹54,999", badge:"hot", img:"https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&h=400&fit=crop" },
-  { cat:"International", name:"Dubai City of Gold Tour", loc:"Dubai, Abu Dhabi", days:"5N/6D", people:"2", rating:4.8, reviews:1023, old:"₹65,999", price:"₹42,999", badge:"sale", img:"https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&h=400&fit=crop" },
-  { cat:"International", name:"Bali Honeymoon Special", loc:"Ubud, Seminyak, Nusa Dua", days:"6N/7D", people:"2", rating:4.9, reviews:654, old:"₹55,999", price:"₹34,999", badge:"hot", img:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&h=400&fit=crop" },
-  { cat:"International", name:"Thailand Grand Explorer", loc:"Bangkok, Pattaya, Phuket", days:"6N/7D", people:"2", rating:4.7, reviews:876, old:"₹42,999", price:"₹28,999", badge:"sale", img:"https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600&h=400&fit=crop" },
-  { cat:"International", name:"Singapore & Malaysia Twin", loc:"Singapore, Kuala Lumpur", days:"5N/6D", people:"2-4", rating:4.8, reviews:543, old:"₹52,999", price:"₹36,999", badge:"", img:"https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&h=400&fit=crop" },
-  { cat:"International", name:"Europe Grand Tour", loc:"Paris, Swiss, Rome, Amsterdam", days:"10N/11D", people:"2", rating:4.9, reviews:234, old:"₹1,99,999", price:"₹1,29,999", badge:"lux", img:"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&h=400&fit=crop" },
-  { cat:"International", name:"Swiss Alps Dream Vacation", loc:"Zurich, Interlaken, Lucerne", days:"6N/7D", people:"2", rating:4.9, reviews:198, old:"₹1,45,999", price:"₹99,999", badge:"lux", img:"https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=600&h=400&fit=crop" },
-  { cat:"International", name:"Vietnam & Cambodia Explorer", loc:"Hanoi, Ha Long, Siem Reap", days:"7N/8D", people:"2", rating:4.6, reviews:321, old:"₹48,999", price:"₹32,999", badge:"new", img:"https://images.unsplash.com/photo-1528127269322-539801943592?w=600&h=400&fit=crop" },
-  { cat:"International", name:"Turkey Magical Highlights", loc:"Istanbul, Cappadocia, Pamukkale", days:"7N/8D", people:"2", rating:4.8, reviews:456, old:"₹72,999", price:"₹49,999", badge:"hot", img:"https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=600&h=400&fit=crop" },
-  { cat:"International", name:"Sri Lanka Heritage Trail", loc:"Colombo, Kandy, Sigiriya", days:"5N/6D", people:"2-4", rating:4.5, reviews:267, old:"₹32,999", price:"₹22,999", badge:"", img:"https://images.unsplash.com/photo-1580977276076-ae4b8c219b8e?w=600&h=400&fit=crop" },
-  { cat:"International", name:"Japan Cherry Blossom Tour", loc:"Tokyo, Kyoto, Osaka", days:"7N/8D", people:"2", rating:4.9, reviews:178, old:"₹1,35,999", price:"₹89,999", badge:"lux", img:"https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&h=400&fit=crop" },
-  { cat:"International", name:"Australia East Coast", loc:"Sydney, Melbourne, Gold Coast", days:"8N/9D", people:"2", rating:4.7, reviews:145, old:"₹1,55,999", price:"₹1,09,999", badge:"", img:"https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&h=400&fit=crop" },
-  { cat:"International", name:"Mauritius Romantic Getaway", loc:"Port Louis, Blue Bay", days:"5N/6D", people:"2", rating:4.8, reviews:312, old:"₹72,999", price:"₹49,999", badge:"sale", img:"https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=600&h=400&fit=crop" },
-  { cat:"International", name:"Egypt Pyramids & Nile Cruise", loc:"Cairo, Luxor, Aswan", days:"6N/7D", people:"2", rating:4.7, reviews:234, old:"₹78,999", price:"₹54,999", badge:"new", img:"https://images.unsplash.com/photo-1539768942893-daf53e736c68?w=600&h=400&fit=crop" },
-  { cat:"International", name:"Greece Island Hopping", loc:"Athens, Santorini, Mykonos", days:"7N/8D", people:"2", rating:4.9, reviews:189, old:"₹1,25,999", price:"₹84,999", badge:"lux", img:"https://images.unsplash.com/photo-1533105079780-92b9be482077?w=600&h=400&fit=crop" },
-
-  // HONEYMOON
-  { cat:"Honeymoon", name:"Romantic Bali Honeymoon", loc:"Ubud, Kuta, Nusa Penida", days:"6N/7D", people:"2", rating:4.9, reviews:876, old:"₹59,999", price:"₹39,999", badge:"hot", img:"https://images.unsplash.com/photo-1539367628448-4bc5c9d171c8?w=600&h=400&fit=crop" },
-  { cat:"Honeymoon", name:"Maldives Water Villa Special", loc:"Private Island Resort", days:"4N/5D", people:"2", rating:5.0, reviews:456, old:"₹1,25,999", price:"₹79,999", badge:"lux", img:"https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=600&h=400&fit=crop" },
-  { cat:"Honeymoon", name:"Santorini Sunset Romance", loc:"Oia, Fira, Black Beach", days:"5N/6D", people:"2", rating:4.9, reviews:345, old:"₹1,15,999", price:"₹74,999", badge:"lux", img:"https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&h=400&fit=crop" },
-  { cat:"Honeymoon", name:"Kashmir Moonlight Package", loc:"Srinagar, Gulmarg, Pahalgam", days:"5N/6D", people:"2", rating:4.8, reviews:567, old:"₹34,999", price:"₹22,999", badge:"sale", img:"https://images.unsplash.com/photo-1597432538145-93cf0bce4e7b?w=600&h=400&fit=crop" },
-  { cat:"Honeymoon", name:"Mauritius Beach Romance", loc:"Grand Baie, Chamarel", days:"5N/6D", people:"2", rating:4.8, reviews:234, old:"₹82,999", price:"₹55,999", badge:"hot", img:"https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=600&h=400&fit=crop" },
-  { cat:"Honeymoon", name:"Swiss Honeymoon Fantasy", loc:"Zurich, Interlaken, Geneva", days:"7N/8D", people:"2", rating:4.9, reviews:167, old:"₹1,65,999", price:"₹1,09,999", badge:"lux", img:"https://images.unsplash.com/photo-1527668752968-14dc70a27c95?w=600&h=400&fit=crop" },
-  { cat:"Honeymoon", name:"Paris Love in the City", loc:"Paris, Versailles", days:"5N/6D", people:"2", rating:4.8, reviews:289, old:"₹95,999", price:"₹64,999", badge:"", img:"https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600&h=400&fit=crop" },
-
-  // ADVENTURE
-  { cat:"Adventure", name:"Nepal Everest Base Camp Trek", loc:"Kathmandu, Lukla, EBC", days:"12N/13D", people:"Group", rating:4.8, reviews:123, old:"₹55,999", price:"₹38,999", badge:"new", img:"https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&h=400&fit=crop" },
-  { cat:"Adventure", name:"Iceland Northern Lights Quest", loc:"Reykjavik, Golden Circle", days:"5N/6D", people:"2-4", rating:4.9, reviews:234, old:"₹1,35,999", price:"₹89,999", badge:"lux", img:"https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=600&h=400&fit=crop" },
-  { cat:"Adventure", name:"New Zealand Extreme Sports", loc:"Queenstown, Milford Sound", days:"7N/8D", people:"2-4", rating:4.8, reviews:178, old:"₹1,45,999", price:"₹99,999", badge:"hot", img:"https://images.unsplash.com/photo-1469521669194-babb45599def?w=600&h=400&fit=crop" },
-  { cat:"Adventure", name:"Ladakh Motorbiking Xtreme", loc:"Leh, Nubra, Pangong, Khardung", days:"8N/9D", people:"Group", rating:4.7, reviews:345, old:"₹35,999", price:"₹24,999", badge:"hot", img:"https://images.unsplash.com/photo-1626015365107-10a8a5aa4ab4?w=600&h=400&fit=crop" },
-  { cat:"Adventure", name:"African Safari Experience", loc:"Kenya, Masai Mara", days:"6N/7D", people:"2-4", rating:4.9, reviews:145, old:"₹1,25,999", price:"₹84,999", badge:"lux", img:"https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop" },
-  { cat:"Adventure", name:"Rishikesh Bungee & Rafting", loc:"Rishikesh, Shivpuri", days:"2N/3D", people:"2-8", rating:4.5, reviews:678, old:"₹9,999", price:"₹5,999", badge:"sale", img:"https://images.unsplash.com/photo-1530866495561-507c83b7f9fa?w=600&h=400&fit=crop" },
-
-  // BUDGET
-  { cat:"Budget", name:"Goa Budget Bash", loc:"Calangute, Baga, Anjuna", days:"3N/4D", people:"2-6", rating:4.4, reviews:1234, old:"₹8,999", price:"₹4,999", badge:"sale", img:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&h=400&fit=crop" },
-  { cat:"Budget", name:"Pondicherry French Quarter", loc:"Pondicherry, Auroville", days:"3N/4D", people:"2", rating:4.5, reviews:456, old:"₹11,999", price:"₹6,999", badge:"", img:"https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&h=400&fit=crop" },
-  { cat:"Budget", name:"Jaipur Pink City Explorer", loc:"Jaipur, Amer Fort", days:"2N/3D", people:"2-4", rating:4.3, reviews:567, old:"₹9,999", price:"₹5,499", badge:"", img:"https://images.unsplash.com/photo-1599661046289-e31897846e41?w=600&h=400&fit=crop" },
-  { cat:"Budget", name:"Udaipur Lake City Weekend", loc:"Udaipur, Ranakpur", days:"2N/3D", people:"2", rating:4.6, reviews:345, old:"₹12,999", price:"₹7,499", badge:"new", img:"https://images.unsplash.com/photo-1585128792020-803d29415281?w=600&h=400&fit=crop" },
-  { cat:"Budget", name:"Bangkok Budget Bliss", loc:"Bangkok, Pattaya", days:"4N/5D", people:"2", rating:4.4, reviews:789, old:"₹22,999", price:"₹14,999", badge:"sale", img:"https://images.unsplash.com/photo-1563492065599-3520f775eeed?w=600&h=400&fit=crop" },
-  { cat:"Budget", name:"Dharamshala & McLeodganj", loc:"Dharamshala, Triund", days:"3N/4D", people:"2-4", rating:4.5, reviews:234, old:"₹10,999", price:"₹6,499", badge:"", img:"https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop" },
-
-  // LUXURY
-  { cat:"Luxury", name:"Maldives Overwater Villa", loc:"Soneva Fushi, Baa Atoll", days:"5N/6D", people:"2", rating:5.0, reviews:89, old:"₹3,50,999", price:"₹2,49,999", badge:"lux", img:"https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=600&h=400&fit=crop" },
-  { cat:"Luxury", name:"Dubai Luxury Gold Experience", loc:"Burj Al Arab, Palm Jumeirah", days:"5N/6D", people:"2", rating:4.9, reviews:145, old:"₹1,85,999", price:"₹1,29,999", badge:"lux", img:"https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?w=600&h=400&fit=crop" },
-  { cat:"Luxury", name:"Italian Luxury Wine Tour", loc:"Tuscany, Amalfi, Florence", days:"8N/9D", people:"2", rating:4.9, reviews:98, old:"₹2,25,999", price:"₹1,59,999", badge:"lux", img:"https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=600&h=400&fit=crop" },
-];
-
-const features = [
-  { icon:"fa-hand-holding-dollar", title:"Best Price Guarantee", desc:"We match any competitor's price. Find it cheaper elsewhere? We'll refund the difference.", cls:"fi-1" },
-  { icon:"fa-globe", title:"500+ Destinations", desc:"From Leh to London, Goa to Greece — explore 500+ handpicked destinations worldwide.", cls:"fi-2" },
-  { icon:"fa-shield-halved", title:"100% Secure Booking", desc:"SSL encrypted payments with 256-bit security. Your money is safe with us, always.", cls:"fi-3" },
-  { icon:"fa-headset", title:"24/7 Expert Support", desc:"Our travel experts are available round the clock via chat, call, and email.", cls:"fi-4" },
-];
-
-const testimonials = [
-  { text:"Booked our Maldives honeymoon through TripNestX and it was absolutely magical! Everything was perfectly organized — the resort, transfers, meals. Saved over ₹25,000 compared to other sites.", name:"Priya & Rahul", loc:"Mumbai", initials:"PR", stars:5 },
-  { text:"I've booked 4 trips through TripNestX in the last year. The prices are unbeatable and the customer support is incredibly responsive. My go-to travel platform now!", name:"Amit Sharma", loc:"New Delhi", initials:"AS", stars:5 },
-  { text:"The Bali package was beyond our expectations. The itinerary was well-planned, hotels were amazing, and the local tours were top-notch. Highly recommend to everyone!", name:"Sneha Patel", loc:"Bangalore", initials:"SP", stars:5 },
-  { text:"First international trip with family to Dubai. TripNestX made it completely stress-free. Visa assistance, airport transfers, hotel — everything was sorted perfectly.", name:"Vikram Singh", loc:"Jaipur", initials:"VS", stars:4 },
-  { text:"The Europe tour was a dream come true! 10 days across 4 countries and every detail was taken care of. The Swiss Alps day trip was the highlight of my life.", name:"Ananya Gupta", loc:"Kolkata", initials:"AG", stars:5 },
-  { text:"Budget trip to Goa with friends — got an incredible deal at ₹4,999 per person including flights and hotel. Can't believe the value TripNestX offers!", name:"Rohit Kumar", loc:"Chennai", initials:"RK", stars:5 },
-];
-
-// ==================== RENDER FUNCTIONS ====================
+// Naya Square Design Render Function
 function renderDestinations() {
   const grid = document.getElementById('destGrid');
-  grid.innerHTML = destinations.map(d => `
-    <div class="dest-card animate-on-scroll">
-      <img src="${d.img}" alt="${d.name}" loading="lazy">
-      <div class="dest-overlay"></div>
-      <div class="dest-price">${d.price}</div>
-      <div class="dest-info">
-        <h3>${d.name}</h3>
-        <div class="dest-meta"><i class="fas fa-map-marker-alt"></i> ${d.country} <span>|</span> ${d.trips}</div>
+  // CSS for Square Grid
+  grid.style.display = 'grid';
+  grid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
+  grid.style.gap = '24px';
+
+  grid.innerHTML = categories.map(c => `
+    <div class="animate-on-scroll" style="position:relative; aspect-ratio:1/1; overflow:hidden; border-radius:12px; cursor:pointer;" onclick="document.getElementById('packages').scrollIntoView({behavior:'smooth'})" onmouseover="this.querySelector('img').style.transform='scale(1.1)'" onmouseout="this.querySelector('img').style.transform='scale(1)'">
+      
+      <img src="${c.img}" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease;">
+      
+      <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,22,40,0.9) 0%, rgba(10,22,40,0.2) 50%, transparent 100%);"></div>
+      
+      <div style="position:absolute; bottom:25px; left:25px; right:25px; display:flex; justify-content:space-between; align-items:flex-end;">
+        <div>
+          <h3 style="color:#fff; font-family:var(--font-display); font-size:22px; font-weight:800; margin-bottom:5px; text-transform:uppercase; letter-spacing:1px; line-height:1.2;">${c.name}</h3>
+          <div style="color:#FF4B12; font-size:13px; font-weight:700;">${c.tours}</div>
+        </div>
+        <div style="width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.15); backdrop-filter:blur(5px); display:flex; justify-content:center; align-items:center; color:#fff; font-size:16px; border:1px solid rgba(255,255,255,0.3);">
+          <i class="fas fa-arrow-right"></i>
+        </div>
       </div>
+
     </div>
   `).join('');
 }
