@@ -195,28 +195,30 @@ ul { list-style:none; }
 
 /* ========== SEARCH BOX ========== */
 .search-box {
-  background: #fff; border-radius:16px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3); max-width:950px;
-  margin: 0 auto;
+  background: rgba(255,255,255,0.97); border-radius:20px;
+  box-shadow: var(--shadow-xl); max-width:900px;
+  margin: 0 auto; position: relative; z-index: 100;
   animation: fadeInUp 0.6s ease 0.3s both;
-  position: relative; z-index: 100;
-  overflow: visible !important;
+  overflow: visible; /* Calendar ko bahar aane dega */
 }
 .search-tabs {
-  display:flex; border-bottom:1px solid #E8ECF4;
-  background: #f8f9fc; border-radius: 16px 16px 0 0;
+  display:flex; border-bottom:2px solid var(--border);
 }
 .search-tab {
-  flex:1; padding:18px 20px; text-align:center;
-  font-size:15px; font-weight:800; color:#5A6175;
+  flex:1; padding:16px 20px; text-align:center;
+  font-size:14px; font-weight:700; color:var(--text-secondary);
   background:transparent; transition:var(--transition);
   display:flex; align-items:center; justify-content:center; gap:8px;
-  border-bottom:3px solid transparent; margin-bottom:-1px;
+  border-bottom:3px solid transparent; margin-bottom:-2px;
 }
-.search-tab:hover { color:var(--primary); }
+/* KONE (CORNERS) KO GOL RAKHNE KE LIYE YE ADD KIYA HAI */
+.search-tab:first-child { border-top-left-radius: 20px; }
+.search-tab:last-child { border-top-right-radius: 20px; }
+
+.search-tab:hover { color:var(--primary); background:rgba(255,75,18,0.03); }
 .search-tab.active {
   color:var(--primary); border-bottom-color:var(--primary);
-  background: #fff;
+  background: rgba(255,75,18,0.04);
 }
 .search-tab i { font-size:16px; }
 
@@ -861,7 +863,7 @@ ul { list-style:none; }
         <button class="search-tab" onclick="switchRealTab('cabs', this)"><i class="fas fa-car"></i> Cabs</button>
       </div>
 
-      <div style="padding: 10px 25px 25px 25px; background: #fff; border-radius: 0 0 16px 16px; position: relative; z-index: 101;">
+      <div style="padding: 5px 20px 5px 20px; background: transparent; border-radius: 0 0 20px 20px; position: relative; z-index: 101;">
         
         <div id="widget-flights" style="display:block;">
           <script async src="https://tpwgts.com/content?currency=inr&trs=504149&shmarker=707698&show_hotels=false&powered_by=false&locale=en&searchUrl=booking.tripnestx.com%2Fflights&primary_override=%23FF4B12&color_button=%23FF4B12&color_icons=%23FF4B12&dark=%23262626&light=%23FFFFFF&secondary=%23FFFFFF&special=%23C4C4C4&color_focused=%23FF4B12&border_radius=14&plain=true&promo_id=7879&campaign_id=100" charset="utf-8"></script>
@@ -950,22 +952,8 @@ ul { list-style:none; }
           </form>
         </div>
 
-        <div id="widget-cabs" style="display:none; padding: 15px 10px;">
-          <form style="display: flex; gap: 15px; align-items: center; justify-content: space-between; flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 250px; text-align: left;">
-              <label style="font-size: 12px; font-weight: 700; color: #8B92A5; text-transform: uppercase;">Pickup Location</label>
-              <input type="text" id="cab-from" placeholder="e.g. Delhi Airport" required style="width: 100%; padding: 14px 16px; border: 2px solid #E8ECF4; border-radius: 12px; font-size: 15px; font-weight: 600; outline: none; margin-top: 6px; font-family: 'Plus Jakarta Sans', sans-serif;">
-            </div>
-            <div style="flex: 1; min-width: 150px; text-align: left;">
-              <label style="font-size: 12px; font-weight: 700; color: #8B92A5; text-transform: uppercase;">Cab Type</label>
-              <select id="cab-type" style="width: 100%; padding: 14px 16px; border: 2px solid #E8ECF4; border-radius: 12px; font-size: 15px; font-weight: 600; outline: none; margin-top: 6px; font-family: 'Plus Jakarta Sans', sans-serif; background:#fff;">
-                <option>Sedan (Dzire/Etios)</option><option>SUV (Innova)</option><option>Tempo Traveller</option>
-              </select>
-            </div>
-            <button type="button" onclick="openCustomizeForm('Cab Booking: ' + document.getElementById('cab-type').value + ' from ' + document.getElementById('cab-from').value)" style="background: #0A1628; color: #fff; padding: 14px 36px; border-radius: 14px; font-size: 16px; font-weight: 700; border: none; cursor: pointer; box-shadow: 0 6px 20px rgba(10,22,40,0.3); margin-top: 22px;">
-              RENT A CAB
-            </button>
-          </form>
+        <div id="widget-cabs" style="display:none; padding: 15px; text-align: center;">
+          <script src="https://tp.media/content?campaign_id=222&promo_id=8813&shmarker=707698&trs=504070" charset="utf-8"></script>
         </div>
 
     <!-- Travelpayouts Search Widget Container -->
@@ -1639,5 +1627,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+
 
 
