@@ -119,6 +119,25 @@ ul { list-style:none; }
 
 .mobile-menu-btn { display:none; background:none; font-size:24px; color:var(--text); }
 
+/* ========== MEGA MENU (Bharat Booking Style) ========== */
+.nav-item-dropdown { position: relative; height: 100%; display: flex; align-items: center; }
+.nav-item-dropdown > a { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+.mega-menu {
+  position: absolute; top: 90px; left: 50%; transform: translateX(-50%);
+  width: 850px; background: #fff; padding: 30px; border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(10,22,40,0.15);
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: all 0.3s ease; border-top: 4px solid var(--primary);
+  text-align: left;
+}
+.nav-item-dropdown:hover .mega-menu { opacity: 1; visibility: visible; pointer-events: auto; top: 70px; }
+.mega-col h4 { font-size: 15px; font-weight: 800; color: var(--secondary); margin-bottom: 15px; border-bottom: 1px solid #E8ECF4; padding-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;}
+.mega-col h4 span { color: var(--primary); }
+.mega-col a { display: block; font-size: 14px; font-weight: 600; color: var(--text-secondary); padding: 8px 0 !important; transition: 0.2s; border-radius:0 !important; background:transparent !important; }
+.mega-col a:hover { color: var(--primary) !important; transform: translateX(5px); }
+.mega-col a.view-all { color: var(--primary); font-weight: 800; margin-top: 10px; font-size: 13px; }
+  
 /* ========== HERO ========== */
 .hero {
   position:relative; min-height:92vh; display:flex; align-items:center;
@@ -765,9 +784,50 @@ ul { list-style:none; }
       <div class="logo-icon"><i class="fas fa-paper-plane"></i></div>
       TripNest<span>X</span>
     </a>
-    <div class="nav-links">
+<div class="nav-links">
       <a href="#" class="active">Home</a>
-      <a href="#destinations">Destinations</a>
+
+      <div class="nav-item-dropdown">
+        <a href="#destinations">Destinations <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
+        
+        <div class="mega-menu">
+          
+          <div class="mega-col">
+            <h4>Top in <span>India</span></h4>
+            <a href="#packages" onclick="filterPackages('Domestic')">Kashmir (Paradise)</a>
+            <a href="#packages" onclick="filterPackages('Domestic')">Manali & Shimla</a>
+            <a href="#packages" onclick="filterPackages('Domestic')">Kerala Backwaters</a>
+            <a href="#packages" onclick="filterPackages('Domestic')">Goa Beaches</a>
+            <a href="#packages" onclick="filterPackages('Domestic')">Rajasthan Royals</a>
+            <a href="#packages" onclick="filterPackages('Domestic')">Andaman Islands</a>
+            <a href="#packages" class="view-all" onclick="filterPackages('Domestic')">Explore India <i class="fas fa-arrow-right"></i></a>
+          </div>
+          
+          <div class="mega-col">
+            <h4>Top in <span>Asia</span></h4>
+            <a href="#packages" onclick="filterPackages('International')">Bali, Indonesia</a>
+            <a href="#packages" onclick="filterPackages('International')">Dubai, UAE</a>
+            <a href="#packages" onclick="filterPackages('International')">Maldives</a>
+            <a href="#packages" onclick="filterPackages('International')">Singapore & Malaysia</a>
+            <a href="#packages" onclick="filterPackages('International')">Thailand</a>
+            <a href="#packages" onclick="filterPackages('International')">Vietnam & Cambodia</a>
+            <a href="#packages" class="view-all" onclick="filterPackages('International')">Explore Asia <i class="fas fa-arrow-right"></i></a>
+          </div>
+
+          <div class="mega-col">
+            <h4>Top in <span>Europe</span></h4>
+            <a href="#packages" onclick="filterPackages('International')">Paris, France</a>
+            <a href="#packages" onclick="filterPackages('International')">Swiss Alps</a>
+            <a href="#packages" onclick="filterPackages('International')">Italy (Rome/Venice)</a>
+            <a href="#packages" onclick="filterPackages('International')">London, UK</a>
+            <a href="#packages" onclick="filterPackages('International')">Amsterdam</a>
+            <a href="#packages" onclick="filterPackages('International')">Greece (Santorini)</a>
+            <a href="#packages" class="view-all" onclick="filterPackages('International')">Explore Europe <i class="fas fa-arrow-right"></i></a>
+          </div>
+
+        </div>
+      </div>
+
       <a href="#packages">Packages</a>
       <a href="#deals">Deals</a>
       <a href="#about">About</a>
