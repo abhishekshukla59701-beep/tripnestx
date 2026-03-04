@@ -864,9 +864,28 @@ ul { list-style:none; }
           </div>
         </div>
 
-        <div id="widget-trains" style="display:none; text-align:center; padding: 20px;">
-          <h3 style="color:#FF4B12; margin-bottom:15px;">Search Train Tickets</h3>
-          <p style="font-size:14px; margin-bottom:15px;">(Travelpayouts > Trip.com > Tools > Widgets > Train widget copy karke yahan is text ki jagah paste karein)</p>
+<div id="widget-trains" style="display:none; padding: 15px 10px;">
+          <form onsubmit="openCustomizeForm('Bus Ticket Enquiry: ' + document.getElementById('bus-from').value + ' to ' + document.getElementById('bus-to').value); return false;" style="display: flex; gap: 15px; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+            
+            <div style="flex: 1; min-width: 200px; text-align: left;">
+              <label style="font-size: 12px; font-weight: 700; color: #8B92A5; text-transform: uppercase;">From City</label>
+              <input type="text" id="bus-from" placeholder="e.g. New Delhi" required style="width: 100%; padding: 14px 16px; border: 2px solid #E8ECF4; border-radius: 12px; font-size: 15px; font-weight: 600; outline: none; margin-top: 6px; font-family: 'Plus Jakarta Sans', sans-serif;">
+            </div>
+
+            <div style="flex: 1; min-width: 200px; text-align: left;">
+              <label style="font-size: 12px; font-weight: 700; color: #8B92A5; text-transform: uppercase;">To City</label>
+              <input type="text" id="bus-to" placeholder="e.g. Manali" required style="width: 100%; padding: 14px 16px; border: 2px solid #E8ECF4; border-radius: 12px; font-size: 15px; font-weight: 600; outline: none; margin-top: 6px; font-family: 'Plus Jakarta Sans', sans-serif;">
+            </div>
+
+            <div style="flex: 1; min-width: 150px; text-align: left;">
+              <label style="font-size: 12px; font-weight: 700; color: #8B92A5; text-transform: uppercase;">Date of Journey</label>
+              <input type="date" required style="width: 100%; padding: 14px 16px; border: 2px solid #E8ECF4; border-radius: 12px; font-size: 15px; font-weight: 600; outline: none; margin-top: 6px; font-family: 'Plus Jakarta Sans', sans-serif;">
+            </div>
+
+            <button type="submit" style="background: #E03A00; color: #fff; padding: 14px 36px; border-radius: 14px; font-size: 16px; font-weight: 700; border: none; cursor: pointer; box-shadow: 0 6px 20px rgba(224,58,0,0.3); margin-top: 22px; transition: all 0.3s ease;">
+              SEARCH BUSES
+            </button>
+          </form>
         </div>
 
         <div id="widget-cabs" style="display:none; text-align:center; padding: 20px;">
